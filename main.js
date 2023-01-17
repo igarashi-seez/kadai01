@@ -6,6 +6,8 @@ const sendButton = document.getElementById('button01')
 const displayValueButton = document.getElementById('button02');
 const downloadButton = document.getElementById('button03');
 
+
+//jsonに書き込み
 sendButton.addEventListener('click', function () {
   const key = writeKeyInput.value;
   const value = writeValueInput.value;
@@ -16,11 +18,12 @@ sendButton.addEventListener('click', function () {
   ajax.send(data);
 });
 
+
+//jsonを読み込むためのイベントリスナー
 displayValueButton.addEventListener('click', function () {
   displayValue(readKeyInput.value);
 })
-
-//読み込む
+//jsonを読み込み、該当するvalueを表示する関数
 function displayValue (key) {
   fetch("./hiroshi.json")
   .then( response => response.json())
@@ -30,6 +33,8 @@ function displayValue (key) {
   });
 }
 
+
+//ファイルをダウンロード
 downloadButton.addEventListener('click', function () {
   let element = document.createElement('a');
   element.href = './hiroshi.json';
