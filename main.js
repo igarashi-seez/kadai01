@@ -5,13 +5,14 @@ const valueArea = document.getElementById('valueArea');
 const sendButton = document.getElementById('button01')
 const displayValueButton = document.getElementById('button02');
 const downloadButton = document.getElementById('button03');
+const message = document.getElementById('message')
 
 
 //jsonに書き込み
 sendButton.addEventListener('click', function () {
   sendData(writeKeyInput.value, writeValueInput.value)
 });
-
+//input.phpにkeyとvalueを送信する関数
 function sendData(key, value) {
   const encodedKey = encodeURIComponent(key);
   const encodedValue = encodeURIComponent(value)
@@ -20,6 +21,13 @@ function sendData(key, value) {
   ajax.open('POST','index.php',true);
   ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
   ajax.send(data);
+  ajax.onreadystatechange = function() {
+		if( ajax.readyState === 4 && ajax.status === 200) {
+			message.innerHTML = `{${key}:${value}}を追加しました`;
+      writeKeyInput.value = '';
+      writeValueInput.value = '';
+		}
+	};
 }
 
 

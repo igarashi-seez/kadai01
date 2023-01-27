@@ -1,7 +1,1 @@
-{
-  "firstName":"hiroshi",
-  "lastName":"igarashi",
-  "age":27,
-  "birthDay":"March 8",
-  "sex":"man"
-}
+{"firstName":"hiroshi","lastName":"igarashi","age":27,"birthDay":"March 8","sex":"man","":null,"test":"test","input":"empty","lets":"go"}
